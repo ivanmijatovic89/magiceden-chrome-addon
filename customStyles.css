@@ -1,0 +1,87 @@
+/*  Read about this page here: https://developer.chrome.com/extensions/content_scripts.html */
+
+#content{
+    padding: 0;
+}
+
+.highestActivityCollections img{
+    width:50px !important;
+}
+.highestActivityCollections .tw-bg-gray-200{
+    height: auto !important;
+    max-height: auto !important;
+    min-height: auto !important;
+}
+
+.highestActivityCollections .react-horizontal-scrolling-menu--item a{
+     margin-bottom:15px;
+     display:flex;
+}
+
+.highestActivityCollections .react-horizontal-scrolling-menu--item a > div:first-of-type{
+    display:flex;
+}
+.highestActivityCollections .react-horizontal-scrolling-menu--scroll-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.highestActivityCollections .react-horizontal-scrolling-menu--item a > div:first-of-type >  div:nth-of-type(2){
+    padding:0;
+}
+
+.latestSales{
+
+}
+.latestSales .react-horizontal-scrolling-menu--scroll-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.latestSales .react-horizontal-scrolling-menu--item a > div:first-of-type{
+    /* display:flex; */
+    width:150px;
+}
+
+.latestSales img{
+    width:150px !important;
+    height:150px !important;
+}
+.latestSales .react-horizontal-scrolling-menu--item a > div:first-of-type >  div:nth-of-type(1){
+    height:auto;
+    min-height:auto;
+}
+
+.xl\:tw-max-w-\[1800px\]{
+    max-width:100% !important;
+}
+@media (min-width: 1200px){
+    .xl\:tw-max-w-\[1800px\]{
+        max-width:100% !important;
+    }
+}
+.carousel-container{
+    max-width:100% !important;
+}
+
+.react-horizontal-scrolling-menu--scroll-container{
+    padding:0 !important;
+}
+
+.highestActivityCollections div:first-of-type,
+.latestSales div:first-of-type{
+    margin-bottom:0;
+}
+
+.highestActivityCollections h2,
+.latestSales h2{
+    font-size:20px !important;
+}
+
+.main.page > div:nth-of-type(1){
+    display:none;
+}
+/*
+.latestSales .react-horizontal-scrolling-menu--item a > div > div > span:nth-of-type(2) > span:nth-of-type(2) {
+    background:red;
+} */
