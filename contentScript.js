@@ -43,5 +43,5 @@ setTimeout(function() {
         }, (searchParams.get('reload') * 1000) );
     }
 
-}, 50);
+}, 700); // you can set 50 on fast pc
 
