@@ -1,5 +1,3 @@
-/*  Read about this page here: https://developer.chrome.com/extensions/content_scripts.html */
-
 #content{
     padding: 0;
 }
@@ -39,7 +37,6 @@
     flex-wrap: wrap;
 }
 .latestSales .react-horizontal-scrolling-menu--item a > div:first-of-type{
-    /* display:flex; */
     width:150px;
 }
 
