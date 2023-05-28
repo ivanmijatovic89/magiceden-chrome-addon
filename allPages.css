@@ -1,0 +1,11 @@
+/* // SINGLE PAGE DISCOUNT START */
+
+table.discount-table{
+    font-size:20px !important;
+}
+table.discount-table td{
+    padding-right:12px;
+}
+.lime{
+    color:lime !important;
+}

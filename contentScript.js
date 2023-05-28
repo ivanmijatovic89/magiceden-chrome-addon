@@ -1,8 +1,6 @@
-console.log('cao');
-
-
 setTimeout(function() {
 
+    // chrome.runtime.sendMessage({ action: "injectCSS" });
 
     // RELOAD IF HAS PARAM "RELOAD=sec"
     let searchParams = new URLSearchParams(window.location.search)
@@ -43,21 +41,16 @@ setTimeout(function() {
         }, (searchParams.get('reload') * 1000) );
     }
 
-    console.log('ushao unutra');
-
     if( searchParams.has('discount') || searchParams.has('prices')  )
     {
         console.log('Has Discount');
-        var newDiv = $("<div>");
-        newDiv.text('hello world');
 
-
-        var tableHTML = '<table class="discount-table">';
+        var tableHTML = '<table class="discount-table" id="table-main">';
 
         if (searchParams.has('discount') && searchParams.get('discount')) {
             tableHTML+= '<tr>' +
                 '<td class="my-a">Discount:</td>' +
-                '<td>-'+searchParams.get('discount')+'%</td>' +
+                '<td class="lime">-'+searchParams.get('discount')+'%</td>' +
             '</tr>';
         }
 
@@ -80,48 +73,63 @@ setTimeout(function() {
             var priceUsd = (priceBtc * btc).toFixed(0);
             tableHTML+= '<tr>' +
                 '<td>Price:</td>' +
-                '<td>'+priceBtc+' BTC | $'+priceUsd+'</td>' +
-            '</tr>';
+                '<td class="lime">'+priceBtc+' BTC <br/> $'+priceUsd+'</td>' +
+            '</tr>'+
+            '</table>';
 
-            tableHTML+='<tr>' +
-                '<td>Profit:</td>' +
-                '<td>0.002 BTC | $'+profitUsd+'</td>' +
-            '</tr>'+
+            var tableFlip = '<table class="discount-table" id="table-flip">' +
+                '<tr>' +
+                    '<td rowspan="2">Flip</td>' +
+                    '<td>'+pricesBtc[1]+'</td>' +
+                    '<td> - '+pricesBtc[0]+'</td>' +
+                    '<td class="lime"> = <b>'+profitBtc+'</b> BTC</td>' +
+                    // '<td>'+pricesBtc[1] + ' - ' + pricesBtc[0] + ' = ' + profitBtc +'</td>' +
+                '</tr>'+
+                '<tr>' +
+                    '<td>'+pricesUsd[1]+'</td>' +
+                    '<td> - '+pricesUsd[0]+'</td>' +
+                    '<td class="lime"> = <b>$'+profitUsd+'</b></td>' +
+                    // '<td>'+pricesUsd[1] + ' - ' + pricesUsd[0] + ' = $' + profitUsd +'</td>' +
+                '</tr>';
+            '</table>';
+
+            var tableFloor = '<table class="discount-table">' +
             '<tr>' +
                 '<td>&nbsp;</td>' +
-                '<td>&nbsp;</td>' +
+                '<td style="text-align:center;"><small>1.</small></td>' +
+                '<td style="text-align:center;"><small>2.</small></td>' +
+                '<td style="text-align:center;"><small>3.</small></td>' +
+                '<td style="text-align:center;"><small>4.</small></td>' +
+                '<td style="text-align:center;"><small>5.</small></td>' +
+                '<td style="text-align:center;"><small>6.</small></td>' +
             '</tr>'+
             '<tr>' +
-                '<td>Flip btc</td>' +
-                '<td>'+pricesBtc[1] + ' - ' + pricesBtc[0] + ' = ' + profitBtc +'</td>' +
+                '<td>BTC</td>' +
+                '<td>'+pricesBtc[0]+'</td>' +
+                '<td>'+pricesBtc[1]+'</td>' +
+                '<td>'+pricesBtc[2]+'</td>' +
+                '<td>'+pricesBtc[3]+'</td>' +
+                '<td>'+pricesBtc[4]+'</td>' +
+                '<td>'+pricesBtc[5]+'</td>' +
             '</tr>'+
             '<tr>' +
-                '<td>Flip USDT</td>' +
-                '<td>'+pricesUsd[1] + ' - ' + pricesUsd[0] + ' = $' + profitUsd +'</td>' +
-            '</tr>'+
-            '<tr>' +
-                '<td>Floor:</td>' +
-                '<td>'+pricesBtc.slice(0, 5).join(', ')+'</td>' +
-            '</tr>'+
-            '<tr>' +
-                '<td>Floor:</td>' +
-                '<td>'+pricesUsd.slice(0, 5).join(', ')+'</td>' +
+                '<td>USDT</td>' +
+                '<td>'+pricesUsd[0]+'</td>' +
+                '<td>'+pricesUsd[1]+'</td>' +
+                '<td>'+pricesUsd[2]+'</td>' +
+                '<td>'+pricesUsd[3]+'</td>' +
+                '<td>'+pricesUsd[4]+'</td>' +
+                '<td>'+pricesUsd[5]+'</td>' +
             '</tr>';
+            tableFloor+= '</table>';
+
+            $("h1:eq(1)").after(tableHTML);
+            $('#table-main').after(tableFlip);
+            $('#table-flip').after(tableFloor);
         }
 
-
-        tableHTML+= '</table>';
-
-        // Append the table HTML to a container element in the HTML
-        $("#tableContainer").append(tableHTML);
-
-        // $(tableHTML).insertAfter("h1");
-        $("h1:eq(1)").after(tableHTML);
-
-        // $('#content > div').append(newDiv);
     }
 
-    console.log('hello')
     // For Single Page to show
 
 }, 700); // you can set 50 on fast pc

@@ -1,17 +1,19 @@
 {
   "manifest_version": 2,
-  "name": "Magic Eden Activity",
+  "name": "Magic Eden Activity / Single Item",
   "version": "1.0",
   "permissions": [
     "activeTab",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "tabs"
   ],
   "content_scripts": [
     {
       "matches": ["https://*.magiceden.io/*", "http://*.magiceden.io/*", "https://*.magiceden.io/ordinals/*"],
       "js": ["jquery-2.0.2.min.js", "contentScript.js"],
-      "css": ["customStyles.css"]
+      "run_at": "document_end",
+      "css": ["allPages.css"]
     }
   ],
   "background": {
