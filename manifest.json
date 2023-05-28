@@ -10,7 +10,8 @@
   "content_scripts": [
     {
       "matches": ["https://*.magiceden.io/*", "http://*.magiceden.io/*", "https://*.magiceden.io/ordinals/*"],
-      "js": ["jquery-2.0.2.min.js", "contentScript.js"]
+      "js": ["jquery-2.0.2.min.js", "contentScript.js"],
+      "css": ["customStyles.css"]
     }
   ],
   "background": {
